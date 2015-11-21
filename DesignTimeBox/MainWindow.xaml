@@ -9,6 +9,6 @@
         Height="200"
         mc:Ignorable="d">
     <Grid>
-        <Button />
+        <Button Background="Yellow" />
     </Grid>
 </Window>
