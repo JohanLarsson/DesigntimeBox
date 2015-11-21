@@ -39,6 +39,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignTimeFooProvider.cs" />
     <Compile Include="RegisterMetadata.cs" />
     <Compile Include="DesignTimeBackgroundProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

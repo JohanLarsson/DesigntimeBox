@@ -1,9 +1,5 @@
-using System;
-using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using Microsoft.Windows.Design.Metadata;
 using Microsoft.Windows.Design.Model;
 
@@ -21,9 +17,20 @@ namespace DesignTimeBox.Design
 
         public override object TranslatePropertyValue(ModelItem item, PropertyIdentifier identifier, object value)
         {
-            if (identifier == BackgroundPropertyIdentifier)
+            MessageBox.Show($"name: {identifier.Name}\r\n" +
+                            $"value: {value}\r\n" +
+                            $"type: {value?.GetType()}\r\n" +
+                            $"item.View: {item.View}\r\n" +
+                            $"item.GetCurrentValue(): {item.GetCurrentValue()}");
+            if (identifier.DeclaringType == BackgroundPropertyIdentifier.DeclaringType)
             {
-                return Brushes.Lavender;
+                using (var editingScope = item.BeginEdit())
+                {
+                    var button = item.GetCurrentValue() as Button;
+                    button?.SetValue(Control.BackgroundProperty, value);
+                }
+
+                return value;
             }
 
             return base.TranslatePropertyValue(item, identifier, value);

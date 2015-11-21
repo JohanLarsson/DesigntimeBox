@@ -17,6 +17,11 @@ namespace DesignTimeBox.Design
                     typeof(Button),
                     new FeatureAttribute(typeof(DesignTimeBackgroundProvider)),
                     DesignOnlyAttribute.Yes);
+
+                builder.AddCustomAttributes(
+                    typeof(Button),
+                    new FeatureAttribute(typeof(DesignTimeFooProvider)),
+                    DesignOnlyAttribute.Yes);
                 return builder.CreateTable();
             }
         }
